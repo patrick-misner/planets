@@ -5,5 +5,5 @@ const ObjectId = Schema.Types.ObjectId
 
 export const StarSchema = new Schema({
   name: {type: String, required: true},
-  galaxyId: {type: ObjectId, ref: 'ClassRoom', required: true}
+  galaxyId: {type: ObjectId, ref: 'Galaxies', required: true}
 })
