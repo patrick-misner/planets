@@ -1,4 +1,7 @@
 import { galaxyService } from "../services/GalaxyService";
+import { moonService } from "../services/MoonService";
+import { planetService } from "../services/PlanetService";
+import { specieService } from "../services/SpecieService";
 import { starService } from "../services/StarService";
 import BaseController from "../utils/BaseController";
 
@@ -43,21 +46,24 @@ export class GalaxiesController extends BaseController{
    }
    async getPlanets(req, res, next){
      try {
-       let planets = await planetService.getAll({galaxiesId: req.params.id})
+       let planets = await planetService.getAll({galaxyId: req.params.id})
+       return res.send(planets)
      } catch (error) {
        next(error)
      }
    }
    async getMoons(req, res, next){
      try {
-       let moons = await moonService.getAll({moonId: req.params.id})
+       let moons = await moonService.getAll({galaxyId: req.params.id})
+       return res.send(moons)
      } catch (error) {
        next(error)
      }
    }
    async getSpecies(req, res, next){
      try {
-       let specie = await specieService.getAll({specieId: req.params.id})
+       let specie = await specieService.getAll({galaxyId: req.params.id})
+       return res.send(specie)
      } catch (error) {
        next(error)
      }
